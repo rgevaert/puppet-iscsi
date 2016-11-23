@@ -1,0 +1,5 @@
+fixtures:
+    symlinks:
+     iscsi: "#{source_dir}"
+    repositories:
+    forge_modules:

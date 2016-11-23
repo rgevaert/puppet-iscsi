@@ -1,7 +1,29 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-puppetversion = ENV.key?('PUPPET_VERSION') ? "= #{ENV['PUPPET_VERSION']}" : ['>= 3.3']
-gem 'puppet', puppetversion
-gem 'puppetlabs_spec_helper', '>= 0.1.0'
-gem 'puppet-lint', '>= 0.3.2'
-gem 'facter', '>= 1.7.0'
+group :test do
+    gem "rake"
+    gem "puppet", ENV['PUPPET_GEM_VERSION'] || '~> 4.5.0'
+    gem "rspec-puppet"
+    gem "puppetlabs_spec_helper"
+    gem 'rspec-puppet-utils'
+    gem 'rspec-puppet-facts'
+    gem 'hiera-puppet-helper', :git => 'https://github.com/bobtfish/hiera-puppet-helper.git'
+    gem "metadata-json-lint"
+    gem 'puppet-syntax'
+    gem 'puppet-lint'
+    gem 'listen', '<= 3.0.6'
+end
+
+group :integration do
+    gem "beaker", "2.40.0"
+    gem "beaker-rspec"
+    gem "vagrant-wrapper"
+    gem 'serverspec'
+end
+
+group :development do
+    gem "travis"
+    gem "travis-lint"
+    gem "puppet-blacksmith"
+    gem "guard-rake"
+end

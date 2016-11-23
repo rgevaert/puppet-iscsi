@@ -2,6 +2,10 @@
 #
 # This class manages parameters for the iscsi module
 class iscsi::params {
+
+  # By default do not set initiator
+  $initiatorname            = ''
+
   # Auth settings
   $node_authmethod          = false
   $node_username            = false
@@ -19,15 +23,15 @@ class iscsi::params {
   $leading_login            = false
 
   # Timeouts
-  $replacement_timeout      = $operatingsystem ? {
+  $replacement_timeout      = $::operatingsystem ? {
     'Windows' => 30,
     default   => 120
   }
-  $login_timeout            = $operatingsystem ? {
+  $login_timeout            = $::operatingsystem ? {
     'Windows' => 30,
     default   => 15
   }
-  $logout_timeout           = $operatingsystem ? {
+  $logout_timeout           = $::operatingsystem ? {
     'Windows' => 30,
     default   => 15
   }
@@ -39,13 +43,13 @@ class iscsi::params {
   $tgt_reset_timeout        = 30
 
   # Retry
-  $initial_login_retry_max  = $operatingsystem ? {
+  $initial_login_retry_max  = $::operatingsystem ? {
     'Windows' => 5,
     default   => 8
   }
 
   # session and device queue depth
-  $session_cmds_max         = $operatingsystem ? {
+  $session_cmds_max         = $::operatingsystem ? {
     'Windows' => 255,
     default   => 128
   }
@@ -57,19 +61,19 @@ class iscsi::params {
   # iSCSI settings
   $initialR2T               = false
   $immediateData            = true
-  $firstBurstLength         = $operatingsystem ? {
+  $firstBurstLength         = $::operatingsystem ? {
     'Windows' => 65536,
     default   => 262144
   }
-  $maxBurstLength           = $operatingsystem ? {
+  $maxBurstLength           = $::operatingsystem ? {
     'Windows' => 262144,
     default   => 16776192
   }
-  $maxRecvDataSegmentLength = $operatingsystem ? {
+  $maxRecvDataSegmentLength = $::operatingsystem ? {
     'Windows' => 65536,
     default   => 262144
   }
-  $maxXmitDataSegmentLength = $operatingsystem ? {
+  $maxXmitDataSegmentLength = $::operatingsystem ? {
     'Windows' => 262144,
     default   => 0
   }
