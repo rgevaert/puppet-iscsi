@@ -1,5 +1,7 @@
 # iscsi
 
+[![Build Status](https://travis-ci.org/rgevaert/puppet-iscsi.svg?branch=master)](https://travis-ci.org/rgevaert/puppet-iscsi)
+
 #### Table of Contents
 
 1. [Overview](#overview)
