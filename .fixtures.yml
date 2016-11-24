@@ -1,5 +1,13 @@
 fixtures:
-    symlinks:
-     iscsi: "#{source_dir}"
-    repositories:
-    forge_modules:
+  symlinks:
+    iscsi: "#{source_dir}"
+  repositories:
+  forge_modules:
+    stdlib:
+      repo: "puppetlabs-stdlib"
+    registry:
+      repo: "puppetlabs-registry"
+    powershell:
+      repo: "puppetlabs-powershell"
+    chocolatey:
+      repo: "puppetlabs-chocolatey"

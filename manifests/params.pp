@@ -59,35 +59,35 @@ class iscsi::params {
   $xmit_thread_priority     = -20
 
   # iSCSI settings
-  $initialR2T               = false
-  $immediateData            = true
-  $firstBurstLength         = $::operatingsystem ? {
+  $initial_r2t               = false
+  $immediate_data            = true
+  $first_burst_length         = $::operatingsystem ? {
     'Windows' => 65536,
     default   => 262144
   }
-  $maxBurstLength           = $::operatingsystem ? {
+  $max_burst_length           = $::operatingsystem ? {
     'Windows' => 262144,
     default   => 16776192
   }
-  $maxRecvDataSegmentLength = $::operatingsystem ? {
+  $max_recv_data_segment_length = $::operatingsystem ? {
     'Windows' => 65536,
     default   => 262144
   }
-  $maxXmitDataSegmentLength = $::operatingsystem ? {
+  $max_xmit_data_segment_length = $::operatingsystem ? {
     'Windows' => 262144,
     default   => 0
   }
-  $headerDigest             = 'None'
-  $dataDigest               = 'None'
+  $header_digest             = 'None'
+  $data_digest               = 'None'
   $nr_sessions              = 1
 
   # Workarounds
-  $fastAbort                = true
+  $fast_abort                = true
 
   $iscsid_conf              = '/etc/iscsi/iscsid.conf'
 
   case $::osfamily {
-    debian  : {
+    'debian'  : {
       $packages         = 'open-iscsi'
       $service          = 'open-iscsi'
       $iscsid_startup   = '/usr/sbin/iscsid'
@@ -95,7 +95,7 @@ class iscsi::params {
       $exec_provider    = 'posix'
     }
 
-    redhat  : {
+    'redhat'  : {
       $packages         = 'iscsi-initiator-utils'
       $service          = 'iscsid'
       $iscsid_startup   = '/etc/rc.d/init.d/iscsid force-start'
@@ -103,7 +103,7 @@ class iscsi::params {
       $exec_provider    = 'posix'
     }
 
-    windows : {
+    'windows' : {
       $packages         = undef
       $service          = 'msiscsi'
       $iscsid_startup   = 'Restart-Service msiscsi -Force'

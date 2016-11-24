@@ -282,7 +282,7 @@ GEM
     puppet-blacksmith (3.4.0)
       puppet (>= 2.7.16)
       rest-client (~> 1.8.0)
-    puppet-lint (1.1.0)
+    puppet-lint (2.0.2)
     puppet-syntax (2.1.0)
       rake
     puppetlabs_spec_helper (1.1.1)
