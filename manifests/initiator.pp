@@ -123,6 +123,8 @@ inherits iscsi::params {
     if($initiatorname != '') {
       file { '/etc/iscsi/initiatorname.iscsi':
         content => template('iscsi/initiatorname.iscsi.erb'),
+        owner   => 'root',
+        group   => 'root',
         before  => File[$iscsid_conf],
         require => Class['iscsi::install'],
       }
