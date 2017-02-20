@@ -8,7 +8,10 @@ class iscsi::service () inherits iscsi::params {
       'manual' => false,
       default  => true
     },
-    default   => false
+    default   => $iscsi::params::startup ? {
+      'manual' => false,
+      default  => true
+    },
   }
 
   service { $iscsi::params::service:
