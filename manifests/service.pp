@@ -1,7 +1,7 @@
 # Class: iscsi::service
 #
 # This class manages the service for the iscsi module
-class iscsi::service () inherits iscsi::initiator {
+class iscsi::service () {
 
   $_enable = $::operatingsystem ? {
     'Windows' => $iscsi::initiator::iscsid_startup ? {
