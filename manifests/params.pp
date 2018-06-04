@@ -99,7 +99,7 @@ class iscsi::params {
       $packages         = 'iscsi-initiator-utils'
       $service          = 'iscsid'
       $iscsid_startup   = '/etc/rc.d/init.d/iscsid force-start'
-      $package_provider = 'apt'
+      $package_provider = 'yum'
       $exec_provider    = 'posix'
     }
 
